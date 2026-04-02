@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Glow & Grace Salon — Visakhapatnam</title>
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ============================================================
+       CSS VARIABLES & RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #faf7f2;
+      --warm:     #f2ede4;
+      --sand:     #e8ddd0;
+      --rose:     #c9897a;
+      --rose-dk:  #a96d5e;
+      --sage:     #8a9e8c;
+      --charcoal: #2e2a26;
+      --muted:    #7a6f65;
+      --gold:     #c5a96d;
+
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'DM Sans', sans-serif;
+
+      --nav-h: 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
+
+    /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+    .container { width: min(1140px, 92%); margin-inline: auto; }
+    .tag {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.75rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 2px;
+      font-family: var(--ff-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.28s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--rose);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--rose-dk); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid var(--charcoal);
+    }
+    .btn-outline:hover { background: var(--charcoal); color: #fff; transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid rgba(255,255,255,0.6);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+    /* ============================================================
+       DECORATIVE LINES
+    ============================================================ */
+    .deco-line {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .deco-line::before, .deco-line::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sand);
+    }
+    .deco-line span {
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      z-index: 100;
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--sand);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(46,42,38,0.07); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: min(1140px, 92%); margin-inline: auto;
+    }
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.45rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+    .nav-logo em { font-style: italic; color: var(--rose); }
+    .nav-links {
+      display: flex; gap: 2.2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-cta { /* shown on desktop */ }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: var(--nav-h);
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 5% 6rem 8%;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--charcoal);
+      margin-bottom: 1.6rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-title strong { font-weight: 600; }
+    .hero-title em { font-style: italic; color: var(--rose); }
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 400px;
+      margin-bottom: 2.4rem;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .hero-badge {
+      position: absolute; bottom: 2.5rem; left: 8%;
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.08em;
+      display: flex; align-items: center; gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+    .hero-badge::before {
+      content: '★★★★★';
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    /* hero right — illustrated decorative panel */
+    .hero-right {
+      background: var(--warm);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(201,137,122,0.18) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 80%, rgba(138,158,140,0.14) 0%, transparent 50%);
+    }
+    .hero-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 28px,
+          rgba(201,137,122,0.06) 28px,
+          rgba(201,137,122,0.06) 29px
+        );
+    }
+    .hero-portrait {
+      position: absolute; inset: 0;
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    /* big illustrated circle element */
+    .hero-circle {
+      width: min(440px, 80%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(201,137,122,0.22), rgba(197,169,109,0.12));
+      border: 1px solid rgba(201,137,122,0.3);
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: softPulse 6s ease-in-out infinite;
+    }
+    .hero-circle-sm {
+      width: min(260px, 55%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px dashed rgba(197,169,109,0.4);
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: softPulse 6s 1.5s ease-in-out infinite;
+    }
+    /* large serif letter as visual art */
+    .hero-art-letter {
+      font-family: var(--ff-display);
+      font-size: clamp(14rem, 22vw, 22rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(201,137,122,0.13);
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+    .hero-pill {
+      position: absolute;
+      background: rgba(250,247,242,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--sand);
+      border-radius: 60px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      text-transform: uppercase;
+    }
+    .hero-pill-1 { top: 22%; right: 10%; animation: float 4s ease-in-out infinite; }
+    .hero-pill-2 { bottom: 28%; left: 8%; animation: float 4s 1.3s ease-in-out infinite; }
+    .hero-pill-3 { top: 62%; right: 12%; animation: float 4s 0.7s ease-in-out infinite; }
+
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { min-height: 260px; order: -1; }
+      .hero-left { padding: 2rem 5%; }
+      .hero-badge { position: static; margin-top: 2rem; }
+    }
+
+    /* ============================================================
+       STRIP — MARQUEE
+    ============================================================ */
+    .marquee-strip {
+      background: var(--charcoal);
+      color: rgba(250,247,242,0.7);
+      overflow: hidden;
+      padding: 0.8rem 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .marquee-inner {
+      display: inline-flex;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-inner span {
+      padding: 0 2.5rem;
+    }
+    .marquee-inner .dot { color: var(--gold); }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    #about {
+      padding: 7rem 0;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-frame {
+      aspect-ratio: 3/4;
+      background: var(--warm);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-img-fill {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 40% 30%, rgba(201,137,122,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 75%, rgba(138,158,140,0.2) 0%, transparent 50%);
+    }
+    .about-img-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 40px,
+          rgba(201,137,122,0.05) 40px, rgba(201,137,122,0.05) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px,
+          rgba(201,137,122,0.05) 40px, rgba(201,137,122,0.05) 41px);
+    }
+    .about-initials {
+      position: absolute;
+      inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 9rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(201,137,122,0.22);
+      user-select: none;
+    }
+    .about-badge-card {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 4px;
+      padding: 1.2rem 1.6rem;
+      box-shadow: 0 8px 32px rgba(46,42,38,0.1);
+    }
+    .about-badge-card .num {
+      font-family: var(--ff-display);
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--rose);
+      line-height: 1;
+    }
+    .about-badge-card .lbl {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    .about-text h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .about-text h2 em { font-style: italic; color: var(--rose); }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+    .trust-pills {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-top: 1.8rem;
+    }
+    .trust-pill {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      border: 1px solid var(--sand);
+      border-radius: 2px;
+      padding: 0.45rem 0.9rem;
+      background: var(--warm);
+    }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-badge-card { right: 0; }
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    #services {
+      padding: 7rem 0;
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+    .section-header h2 em { font-style: italic; color: var(--rose); }
+    .section-header p {
+      margin-top: 0.8rem;
+      font-size: 0.92rem;
+      color: rgba(250,247,242,0.6);
+      max-width: 520px;
+      margin-inline: auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.5px;
+      border: 1.5px solid rgba(250,247,242,0.07);
+    }
+    .service-card {
+      padding: 2.8rem 2.4rem;
+      border: 1.5px solid rgba(250,247,242,0.07);
+      background: rgba(255,255,255,0.02);
+      transition: background 0.3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--rose);
+      transition: width 0.4s ease;
+    }
+    .service-card:hover { background: rgba(201,137,122,0.06); }
+    .service-card:hover::after { width: 100%; }
+    .svc-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .svc-num {
+      position: absolute; top: 1.4rem; right: 1.8rem;
+      font-family: var(--ff-display);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(250,247,242,0.04);
+      line-height: 1;
+      user-select: none;
+    }
+    .service-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--cream);
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.75;
+    }
+    .svc-price {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-top: 1px solid rgba(197,169,109,0.3);
+      padding-top: 0.7rem;
+    }
+
+    /* ============================================================
+       CTA SECTION
+    ============================================================ */
+    #cta {
+      padding: 7rem 0;
+      background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dk) 100%);
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: 'G&G';
+      font-family: var(--ff-display);
+      font-size: 22rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.05);
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cta-inner { position: relative; z-index: 2; }
+    .cta-inner h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .cta-inner h2 em { font-style: italic; }
+    .cta-inner p {
+      font-size: 0.95rem;
+      opacity: 0.82;
+      max-width: 480px;
+      margin-inline: auto;
+      margin-bottom: 2.4rem;
+    }
+    .cta-lines {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      margin-bottom: 2.4rem;
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      opacity: 0.88;
+    }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================================================
+       BOOKING / FORM
+    ============================================================ */
+    #booking {
+      padding: 7rem 0;
+      background: var(--warm);
+    }
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .booking-info h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .booking-info h2 em { font-style: italic; color: var(--rose); }
+    .booking-info p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .booking-detail {
+      display: flex; align-items: flex-start; gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .booking-detail .icon {
+      font-size: 1rem; margin-top: 0.15rem; color: var(--rose);
+    }
+    .booking-detail .text { font-size: 0.88rem; color: var(--muted); }
+    .booking-detail .text strong { display: block; color: var(--charcoal); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.1rem; }
+
+    /* FORM */
+    .booking-form-wrap {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 4px;
+      padding: 2.8rem;
+      box-shadow: 0 8px 48px rgba(46,42,38,0.06);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.4rem;
+    }
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group select {
+      background: var(--warm);
+      border: 1px solid var(--sand);
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+      font-family: var(--ff-body);
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a6f65' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(201,137,122,0.12);
+    }
+    .form-group input::placeholder { color: var(--sand); }
+    .form-submit {
+      width: 100%;
+      padding: 0.95rem;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-family: var(--ff-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+      margin-top: 0.4rem;
+    }
+    .form-submit:hover { background: var(--rose-dk); transform: translateY(-1px); }
+    .form-submit:active { transform: translateY(0); }
+
+    /* SUCCESS MESSAGE */
+    #success-msg {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      animation: fadeUp 0.5s forwards;
+    }
+    #success-msg .success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    #success-msg h3 {
+      font-family: var(--ff-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    #success-msg p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    #success-msg .ref {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose);
+      border: 1px solid rgba(201,137,122,0.3);
+      border-radius: 2px;
+      padding: 0.4rem 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .booking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .booking-form-wrap { padding: 1.8rem; }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--charcoal);
+      color: rgba(250,247,242,0.5);
+      padding: 3.5rem 0 2rem;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .logo {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand .logo em { font-style: italic; color: var(--rose); }
+    .footer-brand p {
+      font-size: 0.8rem;
+      max-width: 240px;
+      line-height: 1.6;
+    }
+    .footer-links h4, .footer-contact h4 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 0.9rem;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a {
+      font-size: 0.83rem;
+      color: rgba(250,247,242,0.5);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--rose); }
+    .footer-contact p { font-size: 0.83rem; margin-bottom: 0.5rem; }
+    .footer-bottom {
+      border-top: 1px solid rgba(250,247,242,0.07);
+      padding-top: 1.4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+      font-size: 0.72rem;
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+    @keyframes softPulse {
+      0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+      50%       { transform: translate(-50%,-50%) scale(1.04); opacity: 0.8; }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Scroll reveal helper */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Glow <em>&</em> Grace</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#booking">Booking</a></li>
+        <li><a href="#booking" class="btn btn-primary" style="padding:0.5rem 1.3rem;">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <!-- LEFT: copy -->
+    <div class="hero-left">
+      <p class="hero-eyebrow">✦ Visakhapatnam's Boutique Beauty Studio</p>
+      <h1 class="hero-title">
+        Where <em>Beauty</em><br>
+        Meets <strong>Grace</strong>
+      </h1>
+      <p class="hero-sub">
+        Step in, breathe out — and let us take care of the rest. Glow & Grace is Vizag's most beloved beauty sanctuary, blending expert artistry with warm, personalised care.
+      </p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn btn-primary">Book an Appointment</a>
+        <a href="#services" class="btn btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-badge">Trusted by 2,000+ happy clients in Vizag</div>
+    </div>
+
+    <!-- RIGHT: decorative art panel -->
+    <div class="hero-right">
+      <div class="hero-pattern"></div>
+      <div class="hero-art-letter">G</div>
+      <div class="hero-circle"></div>
+      <div class="hero-circle-sm"></div>
+      <div class="hero-pill hero-pill-1">✦ Hair · Skin · Soul</div>
+      <div class="hero-pill hero-pill-2">★ Expert Stylists</div>
+      <div class="hero-pill hero-pill-3">Luxury Facials</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       MARQUEE STRIP
+  ============================================================ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>Haircuts & Styling</span><span class="dot">✦</span>
+      <span>Luxury Facials</span><span class="dot">✦</span>
+      <span>Hair Coloring</span><span class="dot">✦</span>
+      <span>Bridal Makeup</span><span class="dot">✦</span>
+      <span>Spa & Relaxation</span><span class="dot">✦</span>
+      <span>Expert Stylists</span><span class="dot">✦</span>
+      <span>Affordable Luxury</span><span class="dot">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>Haircuts & Styling</span><span class="dot">✦</span>
+      <span>Luxury Facials</span><span class="dot">✦</span>
+      <span>Hair Coloring</span><span class="dot">✦</span>
+      <span>Bridal Makeup</span><span class="dot">✦</span>
+      <span>Spa & Relaxation</span><span class="dot">✦</span>
+      <span>Expert Stylists</span><span class="dot">✦</span>
+      <span>Affordable Luxury</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Visual -->
+        <div class="about-visual reveal">
+          <div class="about-img-frame">
+            <div class="about-img-fill"></div>
+            <div class="about-img-pattern"></div>
+            <div class="about-initials">G&G</div>
+          </div>
+          <div class="about-badge-card">
+            <div class="num">6+</div>
+            <div class="lbl">Years of Excellence</div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="about-text reveal">
+          <p class="tag">✦ Our Story</p>
+          <h2>Born out of a love for <em>making women feel seen</em></h2>
+          <p>
+            Glow & Grace began with a simple belief — that luxury shouldn't be a luxury. Nestled in the heart of Visakhapatnam, our salon was built for women who deserve the very best without the eye-watering price tags.
+          </p>
+          <p>
+            From your first consultation to the final look in the mirror, every moment here is designed to make you feel pampered, valued, and completely at ease. Our team of certified stylists and beauty experts bring creativity, skill, and genuine warmth to everything they do.
+          </p>
+          <p>
+            Whether you're prepping for a big day, refreshing your everyday look, or simply treating yourself — this is your place to glow.
+          </p>
+          <div class="trust-pills">
+            <div class="trust-pill">✓ Certified Stylists</div>
+            <div class="trust-pill">✓ Premium Products Only</div>
+            <div class="trust-pill">✓ Hygienic & Safe</div>
+            <div class="trust-pill">✓ Personalised Consultations</div>
+            <div class="trust-pill">✓ Walk-ins Welcome</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="tag" style="color:var(--rose);">✦ What We Offer</p>
+        <h2>Crafted services for every<br><em>version of beautiful</em></h2>
+        <p>From fresh cuts to bridal glamour — every service is tailored just for you.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- 1. Haircuts & Styling -->
+        <div class="service-card reveal">
+          <span class="svc-icon">✂️</span>
+          <span class="svc-num">01</span>
+          <h3>Haircuts & Styling</h3>
+          <p>Your hair is your statement. Our stylists take the time to understand your face shape, lifestyle, and personality before a single snip. Whether it's a classic trim, a bold transformation, or a special-occasion blowout — we make every strand count.</p>
+          <div class="svc-price">Starting from ₹399</div>
+        </div>
+
+        <!-- 2. Hair Coloring -->
+        <div class="service-card reveal">
+          <span class="svc-icon">🎨</span>
+          <span class="svc-num">02</span>
+          <h3>Hair Coloring</h3>
+          <p>From sun-kissed balayage to rich, bold hues — our colour specialists use only premium, gentle formulas that leave your hair vibrant, shiny, and healthy. Global colour, highlights, ombre, and corrective colour all done with precision and care.</p>
+          <div class="svc-price">Starting from ₹999</div>
+        </div>
+
+        <!-- 3. Skincare & Facials -->
+        <div class="service-card reveal">
+          <span class="svc-icon">🌿</span>
+          <span class="svc-num">03</span>
+          <h3>Skincare & Facials</h3>
+          <p>Your skin deserves a moment to breathe. Our curated facial menu includes hydrating, brightening, anti-acne, and anti-ageing treatments using dermatologist-trusted formulas. Walk in with tired skin, walk out with a natural, healthy glow.</p>
+          <div class="svc-price">Starting from ₹799</div>
+        </div>
+
+        <!-- 4. Bridal Makeup -->
+        <div class="service-card reveal">
+          <span class="svc-icon">👰</span>
+          <span class="svc-num">04</span>
+          <h3>Bridal Makeup</h3>
+          <p>Your wedding day deserves nothing less than magic. Our bridal artists specialise in looks that last through tears, laughter, and dancing — while keeping you looking effortlessly you. Includes a trial session and personalised skin prep consultation.</p>
+          <div class="svc-price">Starting from ₹5,999</div>
+        </div>
+
+        <!-- 5. Spa & Relaxation -->
+        <div class="service-card reveal">
+          <span class="svc-icon">🕯️</span>
+          <span class="svc-num">05</span>
+          <h3>Spa & Relaxation</h3>
+          <p>Sometimes the most beautiful thing you can do is simply rest. Our spa menu features head massages, aromatherapy, deep conditioning hair treatments, and full-body relaxation rituals designed to melt away stress and restore your natural radiance.</p>
+          <div class="svc-price">Starting from ₹1,299</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <p class="tag" style="color:rgba(255,255,255,0.65);">✦ Your Glow is Waiting</p>
+        <h2>Ready to feel like the <em>best version</em> of yourself?</h2>
+        <div class="cta-lines">
+          <span>✦ Walk in as you are. Leave looking like you always wanted to.</span>
+          <span>✦ Life is too short for a bad hair day — we've got you covered.</span>
+          <span>✦ Because you deserve a little luxury, every single day.</span>
+        </div>
+        <div class="cta-btns">
+          <a href="#booking" class="btn btn-ghost">Book Your Appointment</a>
+          <a href="tel:+919876543210" class="btn btn-ghost">Call Us Today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       BOOKING
+  ============================================================ -->
+  <section id="booking">
+    <div class="container">
+      <div class="booking-grid">
+
+        <!-- Left: info -->
+        <div class="booking-info reveal">
+          <p class="tag">✦ Reserve Your Spot</p>
+          <h2>Book an <em>Appointment</em></h2>
+          <p>Slots fill up fast — especially on weekends. Pick your preferred time and we'll have your chair, your stylist, and your favourite beverage ready.</p>
+
+          <div class="booking-detail">
+            <span class="icon">📍</span>
+            <div class="text">
+              <strong>Location</strong>
+              Glow & Grace Salon, MVP Colony, Visakhapatnam, Andhra Pradesh
+            </div>
+          </div>
+          <div class="booking-detail">
+            <span class="icon">🕙</span>
+            <div class="text">
+              <strong>Hours</strong>
+              Monday – Saturday: 9:00 AM – 8:00 PM<br>
+              Sunday: 10:00 AM – 6:00 PM
+            </div>
+          </div>
+          <div class="booking-detail">
+            <span class="icon">📞</span>
+            <div class="text">
+              <strong>Phone</strong>
+              +91 98765 43210
+            </div>
+          </div>
+          <div class="booking-detail">
+            <span class="icon">📩</span>
+            <div class="text">
+              <strong>Email</strong>
+              hello@glowandgrace.in
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="reveal">
+          <div class="booking-form-wrap">
+
+            <!-- The form (shown by default) -->
+            <form id="booking-form" novalidate>
+              <div class="deco-line"><span>✦</span></div>
+              <p style="font-family:var(--ff-display);font-size:1.3rem;font-weight:300;margin-bottom:1.6rem;color:var(--charcoal);">
+                Fill in your details below
+              </p>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-name">Full Name *</label>
+                  <input type="text" id="f-name" placeholder="Your name" required/>
+                </div>
+                <div class="form-group">
+                  <label for="f-phone">Phone Number *</label>
+                  <input type="tel" id="f-phone" placeholder="+91 00000 00000" required/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="f-service">Select Service *</label>
+                <select id="f-service" required>
+                  <option value="" disabled selected>— Choose a service —</option>
+                  <option value="Haircuts & Styling">Haircuts & Styling</option>
+                  <option value="Hair Coloring">Hair Coloring</option>
+                  <option value="Skincare & Facials">Skincare & Facials</option>
+                  <option value="Bridal Makeup">Bridal Makeup</option>
+                  <option value="Spa & Relaxation">Spa & Relaxation</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-date">Preferred Date *</label>
+                  <input type="date" id="f-date" required/>
+                </div>
+                <div class="form-group">
+                  <label for="f-time">Preferred Time *</label>
+                  <select id="f-time" required>
+                    <option value="" disabled selected>— Pick a slot —</option>
+                    <option>9:00 AM – 10:00 AM</option>
+                    <option>10:00 AM – 11:00 AM</option>
+                    <option>11:00 AM – 12:00 PM</option>
+                    <option>12:00 PM – 1:00 PM</option>
+                    <option>2:00 PM – 3:00 PM</option>
+                    <option>3:00 PM – 4:00 PM</option>
+                    <option>4:00 PM – 5:00 PM</option>
+                    <option>5:00 PM – 6:00 PM</option>
+                    <option>6:00 PM – 7:00 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Inline validation message -->
+              <p id="form-error" style="display:none;color:var(--rose);font-size:0.8rem;margin-bottom:0.8rem;"></p>
+
+              <button type="submit" class="form-submit">✦ Confirm My Appointment</button>
+            </form>
+
+            <!-- Success message (hidden initially) -->
+            <div id="success-msg">
+              <div class="success-icon">🌸</div>
+              <h3>Appointment Booked!</h3>
+              <p id="success-detail">We can't wait to see you. A confirmation will be sent to your number shortly.</p>
+              <div class="ref" id="booking-ref">REF #GG-000000</div>
+              <br/><br/>
+              <button class="btn btn-outline" id="book-another" style="font-size:0.75rem;">Book Another Appointment</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">Glow <em>&</em> Grace</div>
+          <p>Affordable luxury beauty services for women who deserve the very best — right here in Visakhapatnam.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#booking">Book Appointment</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>MVP Colony, Visakhapatnam</p>
+          <p>+91 98765 43210</p>
+          <p>hello@glowandgrace.in</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Glow & Grace Salon. All rights reserved.</span>
+        <span>Made with ♥ in Vizag</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ---- 1. Navbar scroll shadow ---- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    /* ---- 2. Scroll reveal ---- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // stagger children in the same parent by index
+          entry.target.style.transitionDelay = (i * 0.05) + 's';
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ---- 3. Set min date on date picker to today ---- */
+    const dateInput = document.getElementById('f-date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    /* ---- 4. Booking form submission ---- */
+    const bookingForm = document.getElementById('booking-form');
+    const successMsg  = document.getElementById('success-msg');
+    const formError   = document.getElementById('form-error');
+    const successDetail = document.getElementById('success-detail');
+    const bookingRef    = document.getElementById('booking-ref');
+    const bookAnotherBtn = document.getElementById('book-another');
+
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      formError.style.display = 'none';
+
+      // Grab values
+      const name    = document.getElementById('f-name').value.trim();
+      const phone   = document.getElementById('f-phone').value.trim();
+      const service = document.getElementById('f-service').value;
+      const date    = document.getElementById('f-date').value;
+      const time    = document.getElementById('f-time').value;
+
+      // Validation
+      if (!name || !phone || !service || !date || !time) {
+        formError.textContent = '⚠ Please fill in all required fields before confirming.';
+        formError.style.display = 'block';
+        return;
+      }
+      if (!/^[+\d\s\-()]{7,15}$/.test(phone)) {
+        formError.textContent = '⚠ Please enter a valid phone number.';
+        formError.style.display = 'block';
+        return;
+      }
+
+      // Generate a random reference number
+      const ref = 'GG-' + Math.floor(100000 + Math.random() * 900000);
+
+      // Format the date nicely
+      const dateObj = new Date(date + 'T00:00:00');
+      const dateFmt = dateObj.toLocaleDateString('en-IN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+      // Update success details
+      successDetail.innerHTML =
+        `Thank you, <strong>${name}</strong>! Your <em>${service}</em> appointment on <strong>${dateFmt}</strong> at <strong>${time}</strong> has been received. We'll confirm on <strong>${phone}</strong> shortly.`;
+      bookingRef.textContent = 'REF #' + ref;
+
+      // Switch views
+      bookingForm.style.display = 'none';
+      successMsg.style.display  = 'block';
+
+      // Smooth scroll to confirmation
+      successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    /* ---- 5. "Book Another" resets the form ---- */
+    bookAnotherBtn.addEventListener('click', () => {
+      bookingForm.reset();
+      bookingForm.style.display = 'block';
+      successMsg.style.display  = 'none';
+      formError.style.display   = 'none';
+    });
+  </script>
+
+</body>
+</html>
