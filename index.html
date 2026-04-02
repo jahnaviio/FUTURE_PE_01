@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow & Grace Salon — Visakhapatnam</title>
+    <!-- Google Fonts: Elegant Serif and Modern Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES (Premium Palette) --- */
+        :root {
+            --bg-color: #FAF5F0;
+            --card-bg: #F2EBE4;
+            --text-main: #42342B;
+            --text-light: #7A6B63;
+            --accent-rose: #C89688;
+            --accent-gold: #B89B72;
+            --dark-footer: #2D241F;
+            --white: #FFFFFF;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-rose);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b58274;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-main);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: white;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 25px 0;
+            background: transparent;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-rose);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .book-now-btn {
+            background: #222;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 13px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .tagline {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 68px);
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 i {
+            color: var(--accent-rose);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: var(--text-light);
+            font-size: 17px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* --- STATS SECTION --- */
+        .stats {
+            padding: 40px 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 100px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            padding-bottom: 100px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+        }
+
+        .about h2 i {
+            color: var(--accent-rose);
+            font-style: italic;
+        }
+
+        .about-text {
+            max-width: 700px;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            font-size: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .feature-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin: 15px 0;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services {
+            padding-bottom: 100px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 20px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .service-card.wide {
+            grid-column: span 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--accent-rose);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--card-bg);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            max-width: 450px;
+        }
+
+        .price {
+            font-size: 14px;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        /* --- BOOKING SECTION --- */
+        .booking-section {
+            background: var(--dark-footer);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .booking-section h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .booking-section h2 i {
+            color: var(--accent-rose);
+            font-style: italic;
+        }
+
+        .booking-section .sub {
+            color: #A89B93;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .booking-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 8px;
+            color: #A89B93;
+            text-transform: uppercase;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-rose);
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 20px;
+            background-color: var(--accent-rose);
+            padding: 18px;
+            font-size: 16px;
+        }
+
+        #success-msg {
+            display: none;
+            margin-top: 20px;
+            color: #88c89b;
+            font-weight: 500;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .stats-grid, .features-grid, .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-card.wide {
+                grid-column: span 1;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Glow <span>&</span> Grace</a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#">Gallery</a>
+                    <a href="#booking" class="book-now-btn">Book Now</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <span class="tagline">✦ Visakhapatnam's Favourite Beauty Studio ✦</span>
+            <h1>Where Every Woman<br>Deserves to <i>Glow</i></h1>
+            <p>Premium hair and beauty services that don't ask you to choose between quality and affordability. Expert hands. Stunning results. Every single visit.</p>
+            <div class="hero-btns">
+                <a href="#booking" class="btn btn-primary">Book Your Appointment</a>
+                <a href="#services" class="btn btn-outline">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>2000+</h3>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8+</h3>
+                    <p>Years in Vizag</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Expert Stylists</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9★</h3>
+                    <p>Client Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="container">
+            <span class="section-label">Our Story</span>
+            <h2>Beauty Done <i>Right</i></h2>
+            <p class="about-text">Glow & Grace was born in the heart of Visakhapatnam with one belief: that looking and feeling your best should never be a luxury reserved for a few. We built a space where young women and working professionals can walk in, exhale, and leave looking exactly the way they imagined — without a single compromise.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span style="font-size: 24px;">✄</span>
+                    <h4>Trained Expert Stylists</h4>
+                    <p>Our team is professionally trained and up-to-date with global trends — every cut, colour, and treatment is backed by skill you can see.</p>
+                </div>
+                <div class="feature-card">
+                    <span style="font-size: 24px;">✧</span>
+                    <h4>Premium Products Only</h4>
+                    <p>We use salon-grade, skin-safe products that protect your hair and skin — because what touches you matters just as much as the technique.</p>
+                </div>
+                <div class="feature-card">
+                    <span style="font-size: 24px;">◎</span>
+                    <h4>Hygiene You Can Trust</h4>
+                    <p>From freshly sanitised tools to clean linens every appointment — your comfort and safety are the standard, not the exception.</p>
+                </div>
+                <div class="feature-card">
+                    <span style="font-size: 24px;">♡</span>
+                    <h4>Affordable Luxury</h4>
+                    <p>Great beauty shouldn't drain your wallet. Our pricing is built to give you a five-star experience that fits your real life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="container">
+            <span class="section-label">What We Do</span>
+            <h2 style="margin-bottom: 40px;">Services Made for <i>You</i></h2>
+            
+            <div class="services-grid">
+                <!-- Signature Service -->
+                <div class="service-card wide">
+                    <div>
+                        <span class="badge" style="background: #E8D5D0;">Signature Service</span>
+                        <h3>Bridal Makeup & Styling</h3>
+                        <p>Your wedding day deserves nothing less than perfection. Our artists craft looks that last all day — radiant, camera-ready, and completely you.</p>
+                        <span class="price">Packages from ₹4,999</span>
+                    </div>
+                    <div style="font-size: 60px; opacity: 0.1; font-family: serif;">♛</div>
+                </div>
+
+                <div class="service-card">
+                    <span class="badge">Hair</span>
+                    <h3>Haircuts & Styling</h3>
+                    <p>Whether it's a sharp bob, a relaxed shag, or a blowout that turns heads — our stylists listen first, then shape exactly what you had in mind.</p>
+                    <span class="price">From ₹299</span>
+                </div>
+
+                <div class="service-card">
+                    <span class="badge">Colour</span>
+                    <h3>Hair Coloring</h3>
+                    <p>Balayage, highlights, global colour, or a bold fashion shade — our colourists blend technique with precision to give your hair the dimension it deserves.</p>
+                    <span class="price">From ₹799</span>
+                </div>
+
+                <div class="service-card">
+                    <span class="badge">Skin</span>
+                    <h3>Skincare & Facials</h3>
+                    <p>From deep-cleansing hydration facials to brightening treatments, our skin therapists tailor every session to what your skin actually needs that day.</p>
+                    <span class="price">From ₹599</span>
+                </div>
+
+                <div class="service-card">
+                    <span class="badge">Wellness</span>
+                    <h3>Spa & Relaxation</h3>
+                    <p>Unwind with our full-body and head spa rituals — gentle yet deeply restorative treatments that leave you feeling lighter, calmer, and completely renewed.</p>
+                    <span class="price">From ₹899</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING SECTION -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <span class="section-label" style="color: var(--accent-rose);">Ready to Glow?</span>
+            <h2>Your Best Look Is<br><i>One Booking Away</i></h2>
+            <p class="sub">Join thousands of women in Visakhapatnam who've made Glow & Grace their go-to beauty destination.</p>
+
+            <div class="booking-container">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" placeholder="98765 43210" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Service</label>
+                        <select id="service" required>
+                            <option value="">Choose a service...</option>
+                            <option value="haircut">Haircuts & Styling</option>
+                            <option value="color">Hair Coloring</option>
+                            <option value="skin">Skincare & Facials</option>
+                            <option value="bridal">Bridal Makeup</option>
+                            <option value="spa">Spa & Relaxation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Date & Time</label>
+                        <input type="datetime-local" id="datetime" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">Book My Appointment →</button>
+                    <div id="success-msg">✨ Appointment Booked Successfully! We'll call you soon.</div>
+                </form>
+            </div>
+
+            <div style="margin-top: 60px; font-size: 13px; color: #7A6B63; display: flex; justify-content: center; gap: 40px;">
+                <span>✓ Book Now</span>
+                <span>✓ Visit Today</span>
+                <span>✓ Glow With Us</span>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 40px 0; text-align: center; background: #221B17; color: #63564E; font-size: 12px;">
+        <p>&copy; 2024 Glow & Grace Salon — Visakhapatnam, India</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // FORM SUBMISSION LOGIC
+        const appointmentForm = document.getElementById('appointmentForm');
+        const successMsg = document.getElementById('success-msg');
+
+        appointmentForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page reload
+
+            // In a real app, you'd send data to a server here.
+            // For now, we simulate success:
+            
+            // 1. Hide the button or show message
+            successMsg.style.display = 'block';
+            
+            // 2. Clear the fields
+            appointmentForm.reset();
+
+            // 3. Optional: Hide message after 5 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        });
+
+        // SMOOTH SCROLL (Additional safety for older browsers)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
